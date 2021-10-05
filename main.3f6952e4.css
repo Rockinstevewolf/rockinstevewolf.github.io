@@ -28635,7 +28635,7 @@ textarea {
 }
 
 .navbar-default .navbar-nav {
-	border-bottom: 1px solid #eee
+	border-bottom: 1px solid #b2babd
 }
 
 @media (min-width:768px) {
@@ -28671,7 +28671,7 @@ textarea {
 		background-color: transparent
 	}
 	.navbar-default .navbar-collapse {
-		background-color: #fff
+		background-color: #b2babd
 	}
 }
 
