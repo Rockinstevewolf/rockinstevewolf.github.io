@@ -20,13 +20,13 @@ jQuery(function ($) {
         // initialize playlist and controls
         var index = 0,
             playing = false,
-            mediaPath = "./audio/",
+            mediaPath = '/audio',
             extension = '',
             tracks = [{
                 "track": 1,
                 "name": "All This Is - Joe L.'s Studio",
                 "duration": "2:46",
-                "file": "JLS_ATI"
+                "file": "AbletonesBigBand_CorineCorine_Mix"
             }, {
                 "track": 2,
                 "name": "The Forsaken - Broadwing Studio (Final Mix)",
