@@ -20,7 +20,7 @@ jQuery(function ($) {
         // initialize playlist and controls
         var index = 0,
             playing = false,
-            mediaPath = './audio',
+            mediaPath = 'https://archive.org/download/mythium/',
             extension = '',
             tracks = [{
                 "track": 1,
