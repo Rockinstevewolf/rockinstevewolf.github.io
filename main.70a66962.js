@@ -351,9 +351,9 @@
 			}(t)
 		}).call(e, n("juYr"))
 	},
-	LyUB: function (t, e, n) {
+	/*LyUB: function (t, e, n) {
 		t.exports = n.p + "assets/images/work001-04.jpg"
-	},
+	},*/
 	PExH: function (t, e) {},
 	V1TA: function (t, e, n) {
 		(function (t) {
@@ -463,9 +463,9 @@
 			var s = n("25lU")
 		}).call(e, n("juYr"))
 	},
-	bz8M: function (t, e, n) {
+	/*bz8M: function (t, e, n) {
 		t.exports = n.p + "assets/images/work001-01.jpg"
-	},
+	},*/
 	e9iq: function (t, e) {},
 	gnpq: function (t, e, n) {
 		(function (t) {
@@ -608,9 +608,9 @@
 			}(t)
 		}).call(e, n("juYr"))
 	},
-	jgpj: function (t, e, n) {
+	/*jgpj: function (t, e, n) {
 		t.exports = n.p + "assets/images/work01-hover.jpg"
-	},
+	},*/
 	juYr: function (t, e, n) {
 		var i, o;
 		! function (e, n) {
@@ -4512,9 +4512,9 @@
 			}(t)
 		}).call(e, n("juYr"))
 	},
-	tmRP: function (t, e, n) {
+	/*tmRP: function (t, e, n) {
 		t.exports = n.p + "assets/images/work001-02.jpg"
-	},
+	},*/
 	vQEO: function (t, e, n) {
 		(function (t) {
 			+ function (t) {
@@ -4575,11 +4575,11 @@
 		}).call(e, n("juYr"))
 	},
 	wonT: function (t, e, n) {
-		t.exports = n.p + "assets/images/space.jpg"
+		t.exports = n.p + "assets/images/okean.jpg"
 	},
-	wvqX: function (t, e, n) {
+	/*wvqX: function (t, e, n) {
 		t.exports = n.p + "assets/images/work02-hover.jpg"
-	},
+	},*/
 	x66a: function (t, e, n) {
 		(function (t) {
 			+ function (t) {
