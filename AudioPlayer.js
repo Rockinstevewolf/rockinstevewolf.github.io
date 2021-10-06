@@ -26,12 +26,12 @@ jQuery(function ($) {
                 "track": 1,
                 "name": "All This Is - Joe L.'s Studio",
                 "duration": "2:46",
-                "file": "AbletonesBigBand_CorineCorine_Mix"
+                "file": "/AbletonesBigBand_CorineCorine_Mix"
             }, {
                 "track": 2,
                 "name": "The Forsaken - Broadwing Studio (Final Mix)",
                 "duration": "8:30",
-                "file": "Barnstar!_Believer_Mix"
+                "file": "/Barnstar!_Believer_Mix"
             }, {
                 "track": 3,
                 "name": "All The King's Men - Broadwing Studio (Final Mix)",
