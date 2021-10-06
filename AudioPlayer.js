@@ -20,7 +20,7 @@ jQuery(function ($) {
         // initialize playlist and controls
         var index = 0,
             playing = false,
-            mediaPath = '/audio',
+            mediaPath = 'https://rockinstevewolf.github.io/audio/',
             extension = '',
             tracks = [{
                 "track": 1,
@@ -31,7 +31,7 @@ jQuery(function ($) {
                 "track": 2,
                 "name": "The Forsaken - Broadwing Studio (Final Mix)",
                 "duration": "8:30",
-                "file": "BS_TF"
+                "file": "Barnstar!_Believer_Mix"
             }, {
                 "track": 3,
                 "name": "All The King's Men - Broadwing Studio (Final Mix)",
