@@ -290,16 +290,10 @@
 		t.exports = n.p + "assets/apple-icon-180x180.png"
 	},
 	"4hhi": function (t, e, n) {
-		t.exports = n.p + "assets/images/profil.jpg"
-	},
-	"4vuW": function (t, e, n) {
-		t.exports = n.p + "assets/images/work001-03.jpg"
+		t.exports = n.p + "assets/images/profile.jpg"
 	},
 	"6wzU": function (t, e, n) {
 		n("Lu+Q"), n("s51k"), n("m5Wh"), n("x66a"), n("laCn"), n("hxo1"), n("mEQU"), n("1/9l"), n("oOvE"), n("gnpq"), n("vQEO"), n("V1TA")
-	},
-	"6xrK": function (t, e, n) {
-		t.exports = n.p + "assets/images/work03-hover.jpg"
 	},
 	JkW7: function (t, e, n) {
 		"use strict";
@@ -4479,15 +4473,7 @@
 		}
 		var r = {
 			"./apple-icon-180x180.png": "4FPD",
-			"./images/profil.jpg": "4hhi",
-			"./images/space.jpg": "wonT",
-			"./images/work001-01.jpg": "bz8M",
-			"./images/work001-02.jpg": "tmRP",
-			"./images/work001-03.jpg": "4vuW",
-			"./images/work001-04.jpg": "LyUB",
-			"./images/work01-hover.jpg": "jgpj",
-			"./images/work02-hover.jpg": "wvqX",
-			"./images/work03-hover.jpg": "6xrK"
+			"./images/profile.jpg": "4hhi",
 		};
 		i.keys = function () {
 			return Object.keys(r)
