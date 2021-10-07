@@ -28911,9 +28911,9 @@ padding:0;
 ================================================== */
 
 .plyr--audio .plyr__controls {
-background-color:transparent;
 border:none;
 color:#fff;
+background-color:transparent;
 font-family:"Source Sans Pro", arial, sans-serif;
 padding:20px 20px 20px 13px;
 width:100%;
