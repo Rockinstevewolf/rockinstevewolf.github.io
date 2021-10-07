@@ -28941,7 +28941,7 @@ color:rgba(0, 0, 0, .1);
 }
 
 .plyr--full-ui input[type="range"] {
-width:calc(100% - 39px);
+width:100%;
 }
 
 .plyr__controls .plyr__controls__item.plyr__time {
