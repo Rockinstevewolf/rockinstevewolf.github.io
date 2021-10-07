@@ -28921,8 +28921,8 @@ width:100%;
 
 a.plyr__controls__item.plyr__control:hover,
 .plyr--audio .plyr__controls button:hover,
-.plyr--audio .plyr__controls button.tab-focus:focus/*,
-.plyr__play-large*/ {
+.plyr--audio .plyr__controls button.tab-focus:focus,
+.plyr__play-large {
 background-color:rgba(0, 0, 0, .1);
 }
 
