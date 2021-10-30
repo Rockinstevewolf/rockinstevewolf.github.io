@@ -1,5 +1,18 @@
 // Mythium Archive: https://archive.org/details/mythium/
 
+trackBuf = [{
+                "track": 1,
+                "name": "Barnstar! - Believer (Mix)",
+                "duration": "3:41",
+                "file": "Barnstar!_Believer_Mix"
+            }, {
+                "track": 2,
+                "name": "AbletonesBigBand - CorineCorine (Mix)",
+                "duration": "2:46",
+                "file": "AbletonesBigBand_CorineCorine_Mix"
+            }]
+
+
 jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
@@ -22,17 +35,7 @@ jQuery(function ($) {
             playing = false,
             mediaPath = '/audio/',
             extension = '',
-            tracks = [{
-                "track": 1,
-                "name": "Barnstar! - Believer (Mix)",
-                "duration": "3:41",
-                "file": "Barnstar!_Believer_Mix"
-            }, {
-                "track": 2,
-                "name": "AbletonesBigBand - CorineCorine (Mix)",
-                "duration": "2:46",
-                "file": "AbletonesBigBand_CorineCorine_Mix"
-            }],
+            tracks = trackBuf,
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
