@@ -1,12 +1,16 @@
-// Mythium Archive: https://archive.org/details/mythium/
 
 trackBuf = [{
                 "track": 1,
+                "name": "HollowGround - IllFate (Mix)",
+                "duration": "2:22",
+                "file": "HollowGround_IllFate_Full"
+            }, {
+                "track": 2,
                 "name": "Barnstar! - Believer (Mix)",
                 "duration": "3:41",
                 "file": "Barnstar!_Believer_Mix"
             }, {
-                "track": 2,
+                "track": 3,
                 "name": "AbletonesBigBand - CorineCorine (Mix)",
                 "duration": "2:46",
                 "file": "AbletonesBigBand_CorineCorine_Mix"
