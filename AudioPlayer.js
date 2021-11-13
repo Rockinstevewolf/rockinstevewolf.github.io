@@ -5,9 +5,9 @@ trackBuf = [{
                 "file": "Skelpolu_Entwine_Full_Master"
             }, {
                 "track": 2,
-                "name": "HollowGround - IllFate (Mix)",
+                "name": "HollowGround - IllFate (Mix & Master)",
                 "duration": "2:22",
-                "file": "HollowGround_IllFate_Full"
+                "file": "HollowGround_IllFate_Full_mix _master"
             }, {
                 "track": 3,
                 "name": "Barnstar! - Believer (Mix)",
