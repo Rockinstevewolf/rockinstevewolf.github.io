@@ -1,15 +1,20 @@
 trackBuf = [{
                 "track": 1,
+                "name": "Skelpolu - Entwine (Mix & Master)",
+                "duration": "5:25",
+                "file": "Skelpolu_Entwine_Full_Master"
+            }, {
+                "track": 2,
                 "name": "HollowGround - IllFate (Mix)",
                 "duration": "2:22",
                 "file": "HollowGround_IllFate_Full"
             }, {
-                "track": 2,
+                "track": 3,
                 "name": "Barnstar! - Believer (Mix)",
                 "duration": "3:41",
                 "file": "Barnstar!_Believer_Mix"
             }, {
-                "track": 3,
+                "track": 4,
                 "name": "AbletonesBigBand - CorineCorine (Mix)",
                 "duration": "2:46",
                 "file": "AbletonesBigBand_CorineCorine_Mix"
