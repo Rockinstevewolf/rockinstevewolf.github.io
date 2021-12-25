@@ -1,30 +1,35 @@
 trackBuf = [{
                 "track": 1,
+                "name": "Chris Tofield - Give Life One More Chance (Mix & Master)",
+                "duration": "5:29",
+                "file": "ChrisTofield_GiveLifeOneMoreChance_Mix_Master"
+            }, {
+                "track": 2,
                 "name": "Allen Stone - Naturally (Mix)",
                 "duration": "5:06",
                 "file": "Allen_Stone_Naturally_Mix"
             }, {
-                "track": 2,
+                "track": 3,
                 "name": "BalazsDanielBoogieWoogieTrio - OwnWayToBoogie (Mix & Master)",
                 "duration": "2:59",
                 "file": "BalazsDanielBoogieWoogieTrio_OwnWayToBoogie_Full_Mix_Master"
             }, {
-                "track": 3,
+                "track": 4,
                 "name": "Skelpolu - Entwine (Mix & Master)",
                 "duration": "5:25",
                 "file": "Skelpolu_Entwine_Full_Master"
             }, {
-                "track": 4,
+                "track": 5,
                 "name": "HollowGround - IllFate (Mix & Master)",
                 "duration": "2:22",
                 "file": "HollowGround_IllFate_Full_mix _master"
             }, {
-                "track": 5,
+                "track": 6,
                 "name": "Barnstar! - Believer (Mix)",
                 "duration": "3:41",
                 "file": "Barnstar!_Believer_Mix"
             }, {
-                "track": 6,
+                "track": 7,
                 "name": "AbletonesBigBand - CorineCorine (Mix)",
                 "duration": "2:46",
                 "file": "AbletonesBigBand_CorineCorine_Mix"
