@@ -33,10 +33,7 @@
       transition: opacity 0.3s;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
       object-fit: contain;
-      width: auto;
-      height: 100vh;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -50,44 +47,72 @@
         object-fit: contain;
       }
     }
-    @media (max-width: 600px) {
-      .play-btn {
-        font-size: 1.2em;
-        padding: 1em 1.5em;
-      }
-    }
     .center-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      position: absolute;
+      top: 0; left: 0;
       width: 100vw;
       height: 100vh;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
     }
     .play-btn {
-      padding: 1.5em 3em;
-      font-size: 2em;
-      background: rgba(255,255,255,0.3); /* Полупрозрачный белый */
-      color: #222;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
       border: none;
-      border-radius: 0.5em;
+      padding: 0;
+      margin: 0;
+      z-index: 3;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: background 0.2s, color 0.2s;
-      margin-top: 2em;
-      backdrop-filter: blur(2px); /* Легкое размытие под кнопкой */
-    }
-    .play-btn:hover:enabled {
-      background: rgba(34,34,34,0.45);
-      color: #fff;
+      outline: none;
+      pointer-events: auto;
     }
     .play-btn:disabled {
-      background: rgba(170,170,170,0.4);
-      color: #666;
       cursor: not-allowed;
-      box-shadow: none;
+    }
+    .play-icon-wrapper {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 20vw;
+      height: 20vw;
+      max-width: 140px;
+      max-height: 140px;
+      min-width: 64px;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.32);
+      border-radius: 50%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+      transition: background 0.2s, opacity 0.2s;
+      pointer-events: none;
+    }
+    .play-btn:active .play-icon-wrapper,
+    .play-btn:focus .play-icon-wrapper {
+      background: rgba(0,0,0,0.5);
+    }
+    .play-btn:disabled .play-icon-wrapper {
+      background: rgba(100,100,100,0.18);
+      opacity: 0.5;
+    }
+    .play-icon {
+      display: block;
+      width: 48%;
+      height: 48%;
+      fill: #fff;
+      pointer-events: none;
+      margin-left: 8%;
+    }
+    .play-btn:disabled .play-icon {
+      fill: #bbb;
     }
   </style>
 </head>
@@ -97,7 +122,14 @@
 
   <div class="center-content">
     <!-- Кнопка для воспроизведения аудио -->
-    <button class="play-btn" id="playSongBtn">▶ Воспроизвести песню</button>
+    <button class="play-btn" id="playSongBtn" aria-label="Воспроизвести">
+      <span class="play-icon-wrapper">
+        <!-- SVG иконка play -->
+        <svg class="play-icon" viewBox="0 0 60 60">
+          <polygon points="15,10 50,30 15,50" />
+        </svg>
+      </span>
+    </button>
   </div>
 
   <!-- Аудио -->
@@ -107,7 +139,7 @@
     // --- LocalStorage: однократный доступ ---
     const pageKey = 'myUniquePageVisit';
     if (localStorage.getItem(pageKey)) {
-       window.location.replace('code.html'); // Замени на нужный адрес
+       //window.location.replace('code.html'); // Замени на нужный адрес
     } else {
       localStorage.setItem(pageKey, '1');
     }
@@ -119,7 +151,6 @@
       audio.volume = 1;
       audio.play();
       this.disabled = true;
-      this.textContent = "Песня воспроизведена";
     });
 
     // --- Динамическая адаптация обложки ---
@@ -140,4 +171,3 @@
   </script>
 </body>
 </html>
- 
