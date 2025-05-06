@@ -2,175 +2,236 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ХАХАХА</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Тёплый Душ - ХАХАХА</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      width: 100vw;
-      background: #444;
-      overflow: hidden;
-      transition: background 0.5s;
-    }
-    body {
-      min-height: 100vh;
-      min-width: 100vw;
       width: 100vw;
       height: 100vh;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #444444 0%, #232323 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
-    }
-    .cover-bg {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 100vw;
-      max-height: 100vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      font-family: Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       user-select: none;
-      pointer-events: none;
-      z-index: 1;
-      background: #222;
-      transition: opacity 0.3s;
     }
     .center-content {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      width: 370px;
+      max-width: 85vw;
+    }
+    .cover-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 370px;
+      max-height: 370px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.16);
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+    .cover-wrapper:hover {
+      box-shadow: 0 8px 48px rgba(0,0,0,0.3);
+    }
+    .cover {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: filter 0.3s ease;
+      user-select: none;
+      pointer-events: none;
+    }
+    .cover-wrapper:hover .cover {
+      filter: brightness(0.5);
+    }
+    .play-btn,
+    .menu-btn {
+      width: 64px;
+      height: 64px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0;
       pointer-events: none;
-    }
-    .play-btn {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
+      transition:
+        opacity 0.3s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.4);
       border: none;
-      padding: 0;
-      margin: 0;
-      z-index: 3;
       cursor: pointer;
-      outline: none;
+      position: absolute;
+    }
+    .cover-wrapper:hover .play-btn,
+    .cover-wrapper:hover .menu-btn {
+      opacity: 1;
       pointer-events: auto;
     }
-    .play-btn:disabled {
-      cursor: not-allowed;
-    }
-    .play-icon-wrapper {
-      position: absolute;
-      left: 50%;
+    .play-btn {
       top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 20vw;
-      height: 20vw;
-      max-width: 140px;
-      max-height: 140px;
-      min-width: 64px;
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.32);
-      border-radius: 50%;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-      transition: background 0.2s, opacity 0.2s;
-      pointer-events: none;
     }
-    .play-btn:active .play-icon-wrapper,
-    .play-btn:focus .play-icon-wrapper {
-      background: rgba(0,0,0,0.5);
+    .play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: rgba(0,0,0,0.8);
     }
-    .play-btn:disabled .play-icon-wrapper {
-      background: rgba(100,100,100,0.18);
-      opacity: 0.5;
+    .menu-btn {
+      bottom: 12px;
+      left: 12px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
     }
-    .play-icon {
-      display: block;
-      width: 48%;
-      height: 48%;
+    .menu-btn:hover {
+      transform: scale(1.1);
+      background: rgba(0,0,0,0.8);
+    }
+    /* Иконки внутри кнопки play */
+    .play-icon,
+    .pause-icon {
+      width: 32px;
+      height: 32px;
       fill: #fff;
       pointer-events: none;
-      margin-left: 8%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
     }
-    .play-btn:disabled .play-icon {
-      fill: #bbb;
+    .pause-icon {
+      opacity: 0;
+    }
+    .play-active .play-icon {
+      opacity: 1;
+    }
+    .play-active .pause-icon {
+      opacity: 0;
+    }
+    .pause-active .play-icon {
+      opacity: 0;
+    }
+    .pause-active .pause-icon {
+      opacity: 1;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+      pointer-events: none;
+    }
+    .track-title {
+      font-size: 1.3em;
+      font-weight: 600;
+      margin: 24px 0 0 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.22);
+    }
+    .track-artist {
+      font-size: 1em;
+      font-weight: 400;
+      opacity: 0.86;
+      margin: 8px 0 32px 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    }
+    @media (max-width: 600px) {
+      .center-content {
+        width: 85vw;
+      }
+      .cover-wrapper {
+        max-width: 85vw;
+        max-height: 85vw;
+      }
+      .play-btn,
+      .menu-btn {
+        width: 48px;
+        height: 48px;
+      }
+      .play-icon,
+      .pause-icon {
+        width: 24px;
+        height: 24px;
+      }
+      .menu-icon {
+        width: 18px;
+        height: 18px;
+      }
+      .track-title {
+        font-size: 1.1em;
+      }
+      .track-artist {
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Обложка -->
-  <img class="cover-bg" id="cover" src="w.png" alt="Обложка трека" draggable="false" />
-
   <div class="center-content">
-    <!-- Кнопка для воспроизведения аудио -->
-    <button class="play-btn" id="playSongBtn" aria-label="Воспроизвести">
-      <span class="play-icon-wrapper">
-        <!-- SVG иконка play -->
-        <svg class="play-icon" viewBox="0 0 60 60">
+    <div class="cover-wrapper" tabindex="0" aria-label="Обложка трека ХАХАХА">
+      <img class="cover" src="w.png" alt="Обложка ХАХАХА" draggable="false" />
+      
+      <!-- Кнопка воспроизведения -->
+      <button class="play-btn play-active" aria-label="Воспроизвести/Пауза" type="button">
+        <!-- Иконка play -->
+        <svg class="play-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
           <polygon points="15,10 50,30 15,50" />
         </svg>
-      </span>
-    </button>
+        <!-- Иконка pause -->
+        <svg class="pause-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
+          <rect x="15" y="10" width="10" height="40" />
+          <rect x="35" y="10" width="10" height="40" />
+        </svg>
+      </button>
+      
+      <!-- Кнопка меню -->
+      <button class="menu-btn" aria-label="Дополнительные действия" type="button">
+        <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="5" cy="12" r="2"/>
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="19" cy="12" r="2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="track-title">ХАХАХА</div>
+    <div class="track-artist">Тёплый Душ</div>
   </div>
 
-  <!-- Аудио -->
   <audio id="audio" src="your-song.mp3"></audio>
 
-  <!-- Color Thief для получения цвета -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
   <script>
-    // --- LocalStorage: однократный доступ ---
-    const pageKey = 'myUniquePageVisit';
-    if (localStorage.getItem(pageKey)) {
-      // window.location.replace('code.html'); // Замени на нужный адрес
-    } else {
-      localStorage.setItem(pageKey, '1');
-    }
+    const audio = document.getElementById('audio');
+    const playBtn = document.querySelector('.play-btn');
 
-    // --- Кнопка для воспроизведения песни ---
-    document.getElementById('playSongBtn').addEventListener('click', function() {
-      const audio = document.getElementById('audio');
-      audio.currentTime = 0;
-      audio.volume = 1;
-      audio.play();
-      this.disabled = true;
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.classList.remove('play-active');
+        playBtn.classList.add('pause-active');
+        playBtn.setAttribute('aria-label', 'Пауза');
+      } else {
+        audio.pause();
+        playBtn.classList.remove('pause-active');
+        playBtn.classList.add('play-active');
+        playBtn.setAttribute('aria-label', 'Воспроизвести');
+      }
     });
 
-    // --- Динамический фон под обложку ---
-    window.addEventListener('load', function() {
-      const img = document.getElementById('cover');
-      function setGradient() {
-        try {
-          const colorThief = new ColorThief();
-          const rgb = colorThief.getColor(img);
-          const dark = rgb.map(c => Math.max(0, Math.round(c * 0.5)));
-          document.body.style.background = `linear-gradient(to bottom, rgb(${rgb.join(',')}) 0%, rgb(${dark.join(',')}) 100%)`;
-        } catch(e) {
-          console.error('Color Thief error:', e);
-          document.body.style.background = '#444';
-        }
-      }
-      if (img.complete && img.naturalWidth !== 0) {
-        setGradient();
-      } else {
-        img.addEventListener('load', setGradient);
-        img.addEventListener('error', () => {
-          console.error('Image load error');
-          document.body.style.background = '#444';
-        });
-      }
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+      window.open('https://band.link/tplydsh', '_blank', 'noopener');
     });
   </script>
 </body>
