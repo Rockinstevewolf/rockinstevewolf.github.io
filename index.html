@@ -10,8 +10,9 @@
       padding: 0;
       height: 100%;
       width: 100vw;
-      background: linear-gradient(to bottom, #b11a1a 0%, #2b0101 100%);
+      background: #444;
       overflow: hidden;
+      transition: background 0.5s;
     }
     body {
       min-height: 100vh;
@@ -25,49 +26,44 @@
     }
     .cover-bg {
       position: fixed;
-      top: 0; left: 0;
-      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       user-select: none;
       pointer-events: none;
+      z-index: 1;
       background: #222;
       transition: opacity 0.3s;
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      max-width: none;
-      max-height: none;
-    }
-    @media (max-aspect-ratio: 1/1) {
-      .cover-bg {
-        width: 100vw;
-        height: auto;
-        object-fit: contain;
-      }
     }
     .center-content {
-      position: fixed; /* Покрывает весь экран */
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 2;
-      pointer-events: none; /* Чтобы клики проходили к кнопке */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
     }
     .play-btn {
-      pointer-events: auto; /* Чтобы кнопка принимала клики */
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       background: transparent;
       border: none;
       padding: 0;
       margin: 0;
-      width: 100vw;
-      height: 100vh;
+      z-index: 3;
       cursor: pointer;
       outline: none;
-      position: relative;
-      z-index: 3;
+      pointer-events: auto;
     }
     .play-btn:disabled {
       cursor: not-allowed;
@@ -115,7 +111,7 @@
 </head>
 <body>
   <!-- Обложка -->
-  <img class="cover-bg" src="w.png" alt="Обложка трека" draggable="false" />
+  <img class="cover-bg" id="cover" src="w.png" alt="Обложка трека" draggable="false" />
 
   <div class="center-content">
     <!-- Кнопка для воспроизведения аудио -->
@@ -132,11 +128,13 @@
   <!-- Аудио -->
   <audio id="audio" src="your-song.mp3"></audio>
 
+  <!-- Color Thief для получения цвета -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
   <script>
     // --- LocalStorage: однократный доступ ---
     const pageKey = 'myUniquePageVisit';
     if (localStorage.getItem(pageKey)) {
-       //window.location.replace('code.html'); // Замени на нужный адрес
+      // window.location.replace('code.html'); // Замени на нужный адрес
     } else {
       localStorage.setItem(pageKey, '1');
     }
@@ -150,21 +148,30 @@
       this.disabled = true;
     });
 
-    // --- Динамическая адаптация обложки ---
-    function adaptCover() {
-      const img = document.querySelector('.cover-bg');
-      if (!img) return;
-      if(window.innerWidth >= window.innerHeight) {
-        img.style.width = 'auto';
-        img.style.height = '100vh';
-      } else {
-        img.style.width = '100vw';
-        img.style.height = 'auto';
+    // --- Динамический фон под обложку ---
+    window.addEventListener('load', function() {
+      const img = document.getElementById('cover');
+      function setGradient() {
+        try {
+          const colorThief = new ColorThief();
+          const rgb = colorThief.getColor(img);
+          const dark = rgb.map(c => Math.max(0, Math.round(c * 0.5)));
+          document.body.style.background = `linear-gradient(to bottom, rgb(${rgb.join(',')}) 0%, rgb(${dark.join(',')}) 100%)`;
+        } catch(e) {
+          console.error('Color Thief error:', e);
+          document.body.style.background = '#444';
+        }
       }
-    }
-    window.addEventListener('resize', adaptCover);
-    window.addEventListener('orientationchange', adaptCover);
-    adaptCover();
+      if (img.complete && img.naturalWidth !== 0) {
+        setGradient();
+      } else {
+        img.addEventListener('load', setGradient);
+        img.addEventListener('error', () => {
+          console.error('Image load error');
+          document.body.style.background = '#444';
+        });
+      }
+    });
   </script>
 </body>
 </html>
