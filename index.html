@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ХАХАХА</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100vw;
+      background: #444;
+      overflow: hidden;
+    }
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .cover-bg {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+      background: #222;
+      transition: opacity 0.3s;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-fit: contain;
+      width: auto;
+      height: 100vh;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-width: none;
+      max-height: none;
+    }
+    @media (max-aspect-ratio: 1/1) {
+      .cover-bg {
+        width: 100vw;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+    @media (max-width: 600px) {
+      .play-btn {
+        font-size: 1.2em;
+        padding: 1em 1.5em;
+      }
+    }
+    .center-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    .play-btn {
+      padding: 1.5em 3em;
+      font-size: 2em;
+      background: rgba(255,255,255,0.3); /* Полупрозрачный белый */
+      color: #222;
+      border: none;
+      border-radius: 0.5em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.2s, color 0.2s;
+      margin-top: 2em;
+      backdrop-filter: blur(2px); /* Легкое размытие под кнопкой */
+    }
+    .play-btn:hover:enabled {
+      background: rgba(34,34,34,0.45);
+      color: #fff;
+    }
+    .play-btn:disabled {
+      background: rgba(170,170,170,0.4);
+      color: #666;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Обложка -->
+  <img class="cover-bg" src="w.png" alt="Обложка трека" draggable="false" />
+
+  <div class="center-content">
+    <!-- Кнопка для воспроизведения аудио -->
+    <button class="play-btn" id="playSongBtn">▶ Воспроизвести песню</button>
+  </div>
+
+  <!-- Аудио -->
+  <audio id="audio" src="your-song.mp3"></audio>
+
+  <script>
+    // --- LocalStorage: однократный доступ ---
+    const pageKey = 'myUniquePageVisit';
+    if (localStorage.getItem(pageKey)) {
+       window.location.replace('code.html'); // Замени на нужный адрес
+    } else {
+      localStorage.setItem(pageKey, '1');
+    }
+
+    // --- Кнопка для воспроизведения песни ---
+    document.getElementById('playSongBtn').addEventListener('click', function() {
+      const audio = document.getElementById('audio');
+      audio.currentTime = 0;
+      audio.volume = 1;
+      audio.play();
+      this.disabled = true;
+      this.textContent = "Песня воспроизведена";
+    });
+
+    // --- Динамическая адаптация обложки ---
+    function adaptCover() {
+      const img = document.querySelector('.cover-bg');
+      if (!img) return;
+      if(window.innerWidth >= window.innerHeight) {
+        img.style.width = 'auto';
+        img.style.height = '100vh';
+      } else {
+        img.style.width = '100vw';
+        img.style.height = 'auto';
+      }
+    }
+    window.addEventListener('resize', adaptCover);
+    window.addEventListener('orientationchange', adaptCover);
+    adaptCover();
+  </script>
+</body>
+</html>
+ 
